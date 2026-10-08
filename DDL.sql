@@ -212,8 +212,8 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE   PROCEDURE [dbo].[SP_izposoja]
-    @id_knjige INT,
-    @id_clana INT
+    @id_knjige BIGINT,
+    @id_clana BIGINT
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -242,7 +242,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE   PROCEDURE [dbo].[SP_vracilo]
-    @id_knjige INT
+    @id_knjige BIGINT
 AS
 BEGIN
     SET NOCOUNT ON;

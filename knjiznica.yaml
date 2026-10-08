@@ -8,7 +8,7 @@ paths:
   /api/knjige:
     get:
       summary: Iskalnik in pregled knjig
-      description: Pridobivanje seznama knjig z opcijskim filtriranjem po ISBN, naslovu ali statusu.
+      description: Pridobivanje seznama knjig z opcijskim filtriranjem po ISBN in naslovu ter s prikazom besedilnih nazivov statusa in žanra.
       parameters:
         - name: isbn
           in: query
@@ -28,7 +28,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Knjiga'
+                  $ref: '#/components/schemas/KnjigaDTO'
 
     post:
       summary: Vnos nove knjige
@@ -45,9 +45,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Knjiga'
+                $ref: '#/components/schemas/KnjigaDTO'
 
   /api/knjige/{id}:
     put:
@@ -69,6 +67,10 @@ paths:
       responses:
         '200':
           description: Podatki o knjigi uspešno posodobljeni.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KnjigaDTO'
         '400':
           description: Neveljavni podatki ali nedovoljen status.
         '404':
@@ -147,7 +149,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/PregledVrstica'
+                  $ref: '#/components/schemas/PregledVrsticaDTO'
 
   /api/izposoje/log:
     get:
@@ -209,6 +211,7 @@ components:
         - isbn
         - avtor
         - naslov
+        - status_knjige
       properties:
         isbn:
           type: string
@@ -263,7 +266,7 @@ components:
           description: "Opcijsko polje. Dovoljena vrednost je samo 3 (ni na voljo). Če se izpusti ali pošlje null, status v bazi ostane nespremenjen."
           example: 3
 
-    Knjiga:
+    KnjigaDTO:
       type: object
       properties:
         id:
@@ -279,15 +282,22 @@ components:
         naslov:
           type: string
           example: "Hlapci"
+        status_knjige:
+          type: integer
+          format: int32
+          example: 1
+        status_naziv:
+          type: string
+          example: "na voljo"
         zanr_id:
           type: integer
           format: int32
           nullable: true
           example: 1
-        status_knjige:
-          type: integer
-          format: int32
-          example: 1
+        zanr_naziv:
+          type: string
+          nullable: true
+          example: "roman"
 
     NovClan:
       type: object
@@ -343,11 +353,11 @@ components:
       properties:
         id_knjige:
           type: integer
-          format: int32
+          format: int64
           example: 1
         id_clana:
           type: integer
-          format: int32
+          format: int64
           example: 1
 
     ZahtevaVracilo:
@@ -357,10 +367,10 @@ components:
       properties:
         id_knjige:
           type: integer
-          format: int32
+          format: int64
           example: 1
 
-    PregledVrstica:
+    PregledVrsticaDTO:
       type: object
       properties:
         id:
@@ -376,12 +386,12 @@ components:
         naslov:
           type: string
           example: "Hlapci"
-        zanr:
-          type: string
-          example: "roman"
         status_knjige:
           type: string
           example: "na voljo"
+        zanr:
+          type: string
+          example: "roman"
         datum_izposoje:
           type: string
           example: "06.10.2026"
