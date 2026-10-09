@@ -219,9 +219,11 @@ components:
           example: "9789610123456"
         avtor:
           type: string
+          maxLength: 255
           example: "Ivan Cankar"
         naslov:
           type: string
+          maxLength: 255
           example: "Hlapci"
         zanr_id:
           type: integer
@@ -249,9 +251,11 @@ components:
           example: "9789610123456"
         avtor:
           type: string
+          maxLength: 255
           example: "Ivan Cankar"
         naslov:
           type: string
+          maxLength: 255
           example: "Hlapci"
         zanr_id:
           type: integer
@@ -278,9 +282,11 @@ components:
           example: "9789610123456"
         avtor:
           type: string
+          maxLength: 255
           example: "Ivan Cankar"
         naslov:
           type: string
+          maxLength: 255
           example: "Hlapci"
         status_knjige:
           type: integer
@@ -315,6 +321,7 @@ components:
           example: "Novak"
         naslov:
           type: string
+          maxLength: 255
           nullable: true
           example: "Ljubljanska 1, Maribor"
         telefon:
@@ -338,6 +345,7 @@ components:
           example: "Novak"
         naslov:
           type: string
+          maxLength: 255
           nullable: true
           example: "Ljubljanska 1, Maribor"
         telefon:
@@ -382,9 +390,11 @@ components:
           example: "9789610123456"
         avtor:
           type: string
+          maxLength: 255
           example: "Ivan Cankar"
         naslov:
           type: string
+          maxLength: 255
           example: "Hlapci"
         status_knjige:
           type: string
@@ -438,6 +448,7 @@ components:
           example: null
         naslov_knjige:
           type: string
+          maxLength: 255
           nullable: true
           example: "Hlapci"
         naziv_clana:
@@ -446,6 +457,7 @@ components:
           example: "Dragan Jovanovic"
         naslov_clana:
           type: string
+          maxLength: 255
           nullable: true
           example: "Sadjarska 50 Race"
         uporabnik:
