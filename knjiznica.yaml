@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: API Knjižnica
   description: REST API za upravljanje knjižničnih knjig, članov, izposoj ter šifrantov po posodobljeni bazi z uveljavljenimi pravili glede statusov.
-  version: 2.2.0
+  version: 1.0.1
 
 paths:
   /api/knjige:
@@ -282,11 +282,9 @@ components:
           example: "9789610123456"
         avtor:
           type: string
-          maxLength: 255
           example: "Ivan Cankar"
         naslov:
           type: string
-          maxLength: 255
           example: "Hlapci"
         status_knjige:
           type: integer
@@ -390,11 +388,9 @@ components:
           example: "9789610123456"
         avtor:
           type: string
-          maxLength: 255
           example: "Ivan Cankar"
         naslov:
           type: string
-          maxLength: 255
           example: "Hlapci"
         status_knjige:
           type: string
